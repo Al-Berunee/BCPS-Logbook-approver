@@ -102,7 +102,7 @@
           <button id="bcps-stop">Stop</button>
         </div>
         <div class="bcps-status" id="bcps-status">Idle. Click Start to begin.</div>
-        <div class="bcps-note">Runs through Pending entries, page by page, until stopped or none remain.</div>
+        <div class="bcps-note">Runs through Pending entries, page by page, until stopped or none remain. The site's own "X of N" total only updates when the page list reloads (e.g. on Next Page), so it may look stuck for a few approvals at a time — that's normal.</div>
         <div class="bcps-footer">
           Developed by
           <a href="https://www.facebook.com/AAbdullahAlMaruf/" target="_blank" rel="noopener noreferrer">Maruf - 01770578663</a>
@@ -133,7 +133,8 @@
     startBtn.disabled = running;
     stopBtn.disabled = !running;
     statusEl.innerHTML = `<b>${running ? 'Running…' : 'Stopped'}</b> — Approved: <b>${approvedCount}</b>` +
-      (lastMessage ? `<br><span style="opacity:.75">${lastMessage}</span>` : '');
+      (lastMessage ? `<br><span style="opacity:.75">${lastMessage}</span>` : '') +
+      `<br><span style="opacity:.6; font-size:10.5px;">Note: the page's own total count only refreshes on page change — trust the "Approved" number above, not the site's total.</span>`;
   }
 
   function collapse() { expanded = false; renderUI(); }
