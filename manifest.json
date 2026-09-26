@@ -1,0 +1,31 @@
+{
+  "manifest_version": 3,
+  "name": "BCPS Logbook Bulk Approver",
+  "version": "1.0",
+  "description": "Automates View → Approve → Update on the BCPS E-Logbook supervisor approval page.",
+  "permissions": ["activeTab", "scripting"],
+  "host_permissions": ["https://eportal.bcps.edu.bd/*"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "BCPS Logbook Bulk Approver",
+    "default_icon": {
+      "16": "icon16.png",
+      "32": "icon32.png",
+      "48": "icon48.png",
+      "128": "icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icon16.png",
+    "32": "icon32.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://eportal.bcps.edu.bd/supervisor/logbook*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
