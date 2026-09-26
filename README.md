@@ -31,11 +31,13 @@ and keeps going — so it can work through thousands of entries unattended.
 <tr><td width="50%">
 
 ### ✅ Features
-- One‑click **Start / Stop**
+- **Auto‑appears** as a floating panel the moment you open the logbook page
+- Clicking **Start** auto‑minimizes it into a small round button
+- Click the round button anytime to reopen the panel
 - Configurable delay between approvals
 - Auto‑advances across pages
-- Live on‑page status badge (bottom‑right corner)
-- Stops itself if the page behaves unexpectedly, instead of looping forever
+- Auto‑reopens itself when the run finishes or hits an error
+- Toolbar icon also toggles the panel open/closed
 
 </td><td width="50%">
 
@@ -67,12 +69,13 @@ and keeps going — so it can work through thousands of entries unattended.
 ## ▶️ Usage
 
 1. Log in to `eportal.bcps.edu.bd` and open **Logbook Management → Logbook List**.
+   The control panel appears automatically in the bottom‑right corner.
 2. *(Optional, recommended)* Set the **Status** filter to `Pending` and **Rows per page** to `200` — fewer page changes, faster run.
-3. Click the extension icon in the toolbar.
-4. Adjust the **delay** if you want (default `1200 ms` between approvals — keep it reasonable to avoid overloading the server).
-5. Click **Start**.
-6. Watch progress either in the popup or the small status card that appears in the bottom‑right of the page.
-7. Click **Stop** anytime — or just let it finish when no Pending entries remain.
+3. Adjust the **delay** if you want (default `1200 ms` between approvals — keep it reasonable to avoid overloading the server).
+4. Click **Start** — the panel automatically shrinks into a small round button so it stays out of your way.
+5. Click the round button anytime to reopen the panel and check progress or click **Stop**.
+6. The panel reopens by itself when the run finishes or if something needs your attention.
+7. You can also click the extension's toolbar icon anytime to show/hide the panel.
 
 ---
 
@@ -80,13 +83,12 @@ and keeps going — so it can work through thousands of entries unattended.
 
 ```
 bcps-bulk-approver/
-├── manifest.json      # Extension config (MV3)
-├── content.js         # Automation loop — runs on the logbook page
-├── popup.html          # Toolbar popup UI
-├── popup.js            # Popup ↔ content script messaging
-├── logo-popup.png       # BCPS logo shown in the popup
-├── icon16/32/48/128.png # Toolbar / extension icons
-└── README.md            # You are here
+├── manifest.json         # Extension config (MV3)
+├── background.js         # Toolbar icon click → toggles the on-page panel
+├── content.js            # Floating panel UI + the automation loop
+├── logo-popup.png        # BCPS logo shown in the panel / round button
+├── icon16/32/48/128.png  # Toolbar / extension icons
+└── README.md             # You are here
 ```
 
 ---

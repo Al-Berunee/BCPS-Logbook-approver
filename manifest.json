@@ -1,13 +1,15 @@
 {
   "manifest_version": 3,
   "name": "BCPS Logbook Bulk Approver",
-  "version": "1.0",
-  "description": "Automates View → Approve → Update on the BCPS E-Logbook supervisor approval page.",
+  "version": "1.1",
+  "description": "BCPS E-Logbook supervisor approval app, with an on-page floating control panel. Developed by Abdullah Al Maruf | 01770578663",
   "permissions": ["activeTab", "scripting"],
   "host_permissions": ["https://eportal.bcps.edu.bd/*"],
+  "background": {
+    "service_worker": "background.js"
+  },
   "action": {
-    "default_popup": "popup.html",
-    "default_title": "BCPS Logbook Bulk Approver",
+    "default_title": "BCPS Logbook Bulk Approver — click to show/hide panel",
     "default_icon": {
       "16": "icon16.png",
       "32": "icon32.png",
@@ -26,6 +28,12 @@
       "matches": ["https://eportal.bcps.edu.bd/supervisor/logbook*"],
       "js": ["content.js"],
       "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["logo-popup.png"],
+      "matches": ["https://eportal.bcps.edu.bd/*"]
     }
   ]
 }
